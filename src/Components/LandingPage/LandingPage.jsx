@@ -3,6 +3,7 @@ import { Menu, X, Phone, MapPin, Mail, ChevronRight, Award, Users, BookOpen, Tre
 import students from "../../assets/images/LandingPage/students-future.jpg"
 import design10 from '../../assets/images/LandingPage/design10.png'
 import design11 from '../../assets/images/LandingPage/design11.png'
+import logo from "../../assets/images/LandingPage/LOGO/Kautilya.png"
 import Navbar from './Navbar';
 // Motion component for animations
 const Motion = ({ children, className, delay = 0, duration = 0.5, type = 'fadeUp' }) => {
@@ -202,28 +203,41 @@ export default function LandingPage() {
             </section>
 
             {/* Stats Section */}
-            <section id="features" className="py-12 sm:py-16 md:py-20 bg-white">
+            <section id="features" className="py-12 sm:py-16 md:py-20 bg-white ">
                 <Motion type="fadeUp">
-                    <div className="text-center mb-10 sm:mb-12 md:mb-16">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-                            Why We Stand Out?
-                        </h2>
-                        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                            Our consistent results speak louder than words.
-                            Kautilya Law Institute has become Rohtak’s leading CUET coaching brand through its commitment to excellence and personalized learning.
-                        </p>
-                        {/* NEW CONTENT START */}
-                        <p className="text-base sm:text-lg md:text-sm text-gray-600 max-w-7xl mx-auto px-4 mt-4 font-semibold">
-                            Kautilya Law Institute – Rohtak’s Most Trusted CUET Coaching<br />
-                            When you join Kautilya, you don’t just prepare for CUET — you prepare for life.<br />
-                            Our classroom and online programs combine conceptual clarity, practical mock tests, and motivational mentorship to ensure success.<br />
-                            Students from Haryana, Delhi NCR, and nearby regions choose us because we deliver results with responsibility.
-                        </p>
-                        {/* NEW CONTENT END */}
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8 items-center mb-6 md:mb-8">
+
+                        {/* Left Text Column */}
+                        <div>
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                Why We Stand Out?
+                            </h2>
+                            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mb-4">
+                                Our consistent results speak louder than words.
+                                Kautilya Law Institute has become Rohtak’s leading CUET coaching brand through its commitment to excellence and personalized learning.
+                            </p>
+                            <p className="text-base sm:text-lg md:text-sm text-gray-600 max-w-3xl font-semibold">
+                                Kautilya Law Institute – Rohtak’s Most Trusted CUET Coaching<br />
+                                When you join Kautilya, you don’t just prepare for CUET — you prepare for life.<br />
+                                Our classroom and online programs combine conceptual clarity, practical mock tests, and motivational mentorship to ensure success.<br />
+                                Students from Haryana, Delhi NCR, and nearby regions choose us because we deliver results with responsibility.
+                            </p>
+                        </div>
+
+                        {/* Right Image Column */}
+                        <div className="flex justify-center lg:justify-end mt-6 lg:mt-0">
+                            <img
+                                src={logo}
+                                alt="Why choose us"
+                                className="w-full max-w-sm rounded-2xl"
+                            />
+                        </div>
+
                     </div>
                 </Motion>
 
-                <section className="py-10 sm:py-12 md:py-16 bg-blue-900">
+                {/* Stats Section */}
+                <section className="py-10 sm:py-12 md:py-16 bg-blue-900 ">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                             {stats.map((stat, idx) => (
@@ -238,6 +252,7 @@ export default function LandingPage() {
                     </div>
                 </section>
             </section>
+
 
             {/* How to Get Started Section */}
             <section id="get-started" className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
