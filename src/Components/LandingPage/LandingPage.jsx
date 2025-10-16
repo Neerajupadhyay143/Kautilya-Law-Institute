@@ -70,7 +70,6 @@ const Motion = ({ children, className, delay = 0, duration = 0.5, type = 'fadeUp
 export default function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [showForm, setShowForm] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
@@ -162,39 +161,22 @@ export default function LandingPage() {
                         {/* Right Content / Image or Form */}
                         <Motion type="scale" delay={0.4}>
                             <div className="relative mt-8 lg:mt-0">
-                                {!showForm ? (
-                                    <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl transition-all duration-500">
-                                        <img
-                                            src={students}
-                                            alt="Students studying"
-                                            className="rounded-xl sm:rounded-2xl w-full h-auto transition-all duration-500"
-                                        />
-                                        <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-xl flex items-center gap-2 sm:gap-3">
-                                            <div className="bg-green-100 p-2 sm:p-3 rounded-full">
-                                                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-green-600" />
-                                            </div>
-                                            <div>
-                                                <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">1000+</p>
-                                                <p className="text-xs sm:text-sm text-gray-600">Students Placed in top CUET universities since 2022.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl transition-all duration-500">
-                                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">
-                                            Enquire Now
-                                        </h2>
-                                        <form className="flex flex-col gap-3">
-                                            <input type="text" placeholder="Name" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
-                                            <input type="email" placeholder="Email" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
-                                            <input type="text" placeholder="Contact Number" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
-                                            <textarea placeholder="Enter Your Query" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
-                                            <button type="submit" className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-md font-semibold hover:bg-blue-50 transition flex items-center justify-center">
-                                                Schedule a Call
-                                            </button>
-                                        </form>
-                                    </div>
-                                )}
+
+                                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl transition-all duration-500">
+                                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">
+                                        Enquire Now
+                                    </h2>
+                                    <form className="flex flex-col gap-3">
+                                        <input type="text" placeholder="Name" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                                        <input type="email" placeholder="Email" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                                        <input type="text" placeholder="Contact Number" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" />
+                                        <textarea placeholder="Enter Your Query" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+                                        <button type="submit" className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-md font-semibold hover:bg-blue-50 transition flex items-center justify-center">
+                                            Schedule a Call
+                                        </button>
+                                    </form>
+                                </div>
+
                             </div>
                         </Motion>
 
@@ -439,7 +421,7 @@ export default function LandingPage() {
             </section>
 
             {/* Success Tips */}
-            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-yellow-50 to-orange-50">
+            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-yellow-50 to-blue-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <Motion type="fadeUp">
                         <div className="text-center mb-8 sm:mb-10 md:mb-12">
@@ -495,7 +477,7 @@ export default function LandingPage() {
                 </div>
             </section>
             {/* How Kautilya Law Institute Helps You Crack CUET */}
-            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-yellow-0 to-orange-50">
+            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-yellow-0 to-blue-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <Motion type="fadeUp">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -669,8 +651,94 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            {/* contact us demo */}
+
+            <section className="bg-blue-50 py-16 px-6 md:px-20 rounded-t-[80px]">
+                <div className="max-w-5xl mx-auto text-center">
+                    <h5 className="text-[blue] font-semibold uppercase tracking-wider mb-3">
+                        Contact Us
+                    </h5>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-10 leading-snug">
+                        Learn How To Grow Your Knowledge And Build A Successful Career With Us!
+                    </h2>
+
+                    <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                        {/* First Name */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                                First Name
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="First Name"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 outline-none"
+                            />
+                        </div>
+
+                        {/* Email */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                                Email
+                            </label>
+                            <input
+                                type="email"
+                                placeholder="Email Address"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 outline-none"
+                            />
+                        </div>
+
+                        {/* Contact */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                                Contact
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Contact Number"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 outline-none"
+                            />
+                        </div>
+
+                        {/* Company Name */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                                Company Name
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Brand Name"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 outline-none"
+                            />
+                        </div>
+
+                        {/* Message */}
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-600 mb-1">
+                                Your Query
+                            </label>
+                            <textarea
+                                rows="4"
+                                placeholder="Message"
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 outline-none"
+                            ></textarea>
+                        </div>
+
+                        {/* Submit Button */}
+                        <div className="md:col-span-2 flex justify-center mt-4">
+                            <button
+
+                                className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-700 transition flex items-center justify-center text-sm sm:text-base"
+                            >
+                                Book Free Demo Class
+                                <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
             {/* CTA Section */}
-            <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
+            <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 to-indigo-700 mb-6 md:mb-12">
                 <Motion type="scale">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
@@ -691,6 +759,7 @@ export default function LandingPage() {
                     </div>
                 </Motion>
             </section>
+
 
             {/* Footer */}
             <footer className="bg-gray-900 text-gray-300 py-8 sm:py-10 md:py-12">
