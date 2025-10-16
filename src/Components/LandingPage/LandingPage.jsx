@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, MapPin, Mail, ChevronRight, Award, Users, BookOpen, TrendingUp, CheckCircle, Star, Clock, Video, FileText, BarChart } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Mail, ChevronRight, Award, Users, BookOpen, TrendingUp, CheckCircle, Star, Clock, Video, FileText, BarChart, Check, PhoneCall, Monitor, MessageCircle, ClipboardList, BarChart2, MessageSquare, CreditCard, Laptop, UserCheck, } from 'lucide-react';
 import students from "../../assets/images/LandingPage/students-future.jpg"
+import design10 from '../../assets/images/LandingPage/design10.png'
+import design11 from '../../assets/images/LandingPage/design11.png'
 import Navbar from './Navbar';
 // Motion component for animations
 const Motion = ({ children, className, delay = 0, duration = 0.5, type = 'fadeUp' }) => {
@@ -67,7 +69,7 @@ const Motion = ({ children, className, delay = 0, duration = 0.5, type = 'fadeUp
 export default function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-
+    const [showForm, setShowForm] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
@@ -85,9 +87,9 @@ export default function LandingPage() {
 
     const stats = [
         { number: "1000+", label: "Students Placed" },
-        { number: "90%", label: "Satisfaction Rate" },
-        { number: "100+", label: "DU Selections 2024" },
-        { number: "10+", label: "Years Experience" }
+        { number: "90%", label: "Student Satisfaction Rate" },
+        { number: "100+", label: "CUET Selections in Delhi University 2024" },
+        { number: "10+", label: "Faculty with 10+ Years of Teaching Experience" }
     ];
 
     const universities = [
@@ -119,10 +121,12 @@ export default function LandingPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section id="home" className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+            <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <Motion type="fadeUp" delay={0.2}>
+
+                        {/* Left Content */}
+                        <Motion type="fadeUp" delay={0.4}>
                             <div>
                                 <div className="inline-block bg-blue-100 text-blue-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
                                     Rohtak's Most Trusted CUET Coaching
@@ -130,14 +134,22 @@ export default function LandingPage() {
                                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
                                     Your Gateway to Top <span className="text-blue-600">Central Universities</span>
                                 </h1>
-                                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8">
-                                    Dreaming of getting into Delhi University, BHU, JNU, or Hyderabad University? Your journey starts here at Kautilya Law Institute.
+                                <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-2 sm:mb-4">
+                                    Dreaming of getting into Delhi University, BHU, JNU, or Hyderabad University?
+                                    Your journey starts here — at Kautilya Law Institute, Rohtak’s most trusted name for CUET UG Coaching.
                                 </p>
+                                <p className="text-xs sm:text-lg md:text-md text-gray-600 mb-6 sm:mb-8">
+                                    With expert guidance, modern study techniques, and a student-first approach, we help you unlock your potential and secure your seat in India’s best universities.
+                                </p>
+
                                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                    <a href="#contact" className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-700 transition flex items-center justify-center text-sm sm:text-base">
+                                    <button
+                                        onClick={() => setShowForm(true)}
+                                        className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-700 transition flex items-center justify-center text-sm sm:text-base"
+                                    >
                                         Book Free Demo Class
                                         <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                                    </a>
+                                    </button>
                                     <a href="tel:+919996732928" className="border-2 border-blue-600 text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-50 transition flex items-center justify-center text-sm sm:text-base">
                                         <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                                         Call Now
@@ -146,45 +158,130 @@ export default function LandingPage() {
                             </div>
                         </Motion>
 
+                        {/* Right Content / Image or Form */}
                         <Motion type="scale" delay={0.4}>
                             <div className="relative mt-8 lg:mt-0">
-                                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl">
-                                    <img
-                                        src={students}
-                                        alt="Students studying"
-                                        className="rounded-xl sm:rounded-2xl w-full h-auto"
-                                    />
-                                    <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-xl">
-                                        <div className="flex items-center gap-2 sm:gap-3">
+                                {!showForm ? (
+                                    <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl transition-all duration-500">
+                                        <img
+                                            src={students}
+                                            alt="Students studying"
+                                            className="rounded-xl sm:rounded-2xl w-full h-auto transition-all duration-500"
+                                        />
+                                        <div className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-xl flex items-center gap-2 sm:gap-3">
                                             <div className="bg-green-100 p-2 sm:p-3 rounded-full">
                                                 <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-green-600" />
                                             </div>
                                             <div>
                                                 <p className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">1000+</p>
-                                                <p className="text-xs sm:text-sm text-gray-600">Students Placed</p>
+                                                <p className="text-xs sm:text-sm text-gray-600">Students Placed in top CUET universities since 2022.</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                ) : (
+                                    <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl transition-all duration-500">
+                                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600 mb-4 text-center">
+                                            Enquire Now
+                                        </h2>
+                                        <form className="flex flex-col gap-3">
+                                            <input type="text" placeholder="Name" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                                            <input type="email" placeholder="Email" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                                            <input type="text" placeholder="Contact Number" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                                            <textarea placeholder="Enter Your Query" className="border px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"></textarea>
+                                            <button type="submit" className="border-2 border-blue-500 text-blue-500 px-4 py-2 rounded-md font-semibold hover:bg-blue-50 transition flex items-center justify-center">
+                                                Schedule a Call
+                                            </button>
+                                        </form>
+                                    </div>
+                                )}
                             </div>
                         </Motion>
+
                     </div>
                 </div>
             </section>
 
             {/* Stats Section */}
-            <section className="py-10 sm:py-12 md:py-16 bg-blue-900">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-                        {stats.map((stat, idx) => (
-                            <Motion key={idx} type="fadeUp" delay={idx * 0.1}>
-                                <div className="text-center">
-                                    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">{stat.number}</p>
-                                    <p className="text-xs sm:text-sm md:text-base text-blue-200">{stat.label}</p>
+            <section id="features" className="py-12 sm:py-16 md:py-20 bg-white">
+                <Motion type="fadeUp">
+                    <div className="text-center mb-10 sm:mb-12 md:mb-16">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                            Why We Stand Out?
+                        </h2>
+                        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                            Our consistent results speak louder than words.
+                            Kautilya Law Institute has become Rohtak’s leading CUET coaching brand through its commitment to excellence and personalized learning.
+                        </p>
+                        {/* NEW CONTENT START */}
+                        <p className="text-base sm:text-lg md:text-sm text-gray-600 max-w-7xl mx-auto px-4 mt-4 font-semibold">
+                            Kautilya Law Institute – Rohtak’s Most Trusted CUET Coaching<br />
+                            When you join Kautilya, you don’t just prepare for CUET — you prepare for life.<br />
+                            Our classroom and online programs combine conceptual clarity, practical mock tests, and motivational mentorship to ensure success.<br />
+                            Students from Haryana, Delhi NCR, and nearby regions choose us because we deliver results with responsibility.
+                        </p>
+                        {/* NEW CONTENT END */}
+                    </div>
+                </Motion>
+
+                <section className="py-10 sm:py-12 md:py-16 bg-blue-900">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+                            {stats.map((stat, idx) => (
+                                <Motion key={idx} type="fadeUp" delay={idx * 0.1}>
+                                    <div className="text-center">
+                                        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 sm:mb-2">{stat.number}</p>
+                                        <p className="text-xs sm:text-sm md:text-base text-blue-200">{stat.label}</p>
+                                    </div>
+                                </Motion>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            {/* How to Get Started Section */}
+            <section id="get-started" className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                How to Get Started with Our CUET Coaching?
+                            </h2>
+                            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                                It’s quick and simple to begin your journey with Kautilya Law Institute:
+                            </p>
+                        </div>
+                    </Motion>
+
+                    <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+                        {[
+                            "Visit our center or fill out the online enquiry form.",
+                            "Attend a Free Demo Class to experience our teaching style.",
+                            "Choose your preferred Batch Type (Regular / Weekend / Online).",
+                            "Enroll and start preparing with India’s best CUET faculty."
+                        ].map((step, idx) => (
+                            <Motion key={idx} type="fadeUp" delay={0.1 * (idx + 1)}>
+                                <div className="bg-white p-6 sm:p-8 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex items-start gap-4">
+                                    <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-blue-600 text-white font-bold rounded-full text-lg">
+                                        {idx + 1}
+                                    </div>
+                                    <p className="text-gray-700 text-base sm:text-lg">{step}</p>
                                 </div>
                             </Motion>
                         ))}
                     </div>
+
+                    {/* Call to Action */}
+                    <Motion type="scale" delay={0.5}>
+                        <div className="mt-10 text-center">
+                            <a
+                                href="tel:+919996732928"
+                                className="inline-block bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-blue-700 transition transform hover:scale-105"
+                            >
+                                Call Now to Book Your Demo: +91-9996732928
+                            </a>
+                        </div>
+                    </Motion>
                 </div>
             </section>
 
@@ -343,6 +440,213 @@ export default function LandingPage() {
                                 <div className="bg-white p-4 sm:p-5 md:p-6 rounded-xl shadow-md hover:shadow-lg transition">
                                     <h3 className="text-base sm:text-lg font-bold text-blue-900 mb-2">💡 {item.tip}</h3>
                                     <p className="text-sm sm:text-base text-gray-600">{item.desc}</p>
+                                </div>
+                            </Motion>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Refernce books */}
+
+            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-green-50 to-teal-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                Top CUET Reference Books Recommended by Our Faculty
+                            </h2>
+                            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-2">
+                                These hand-picked materials ensure that your preparation remains focused and effective.
+                            </p>
+                        </div>
+                    </Motion>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+                        {[
+                            { title: "NCERTs (Class 11 & 12)", desc: "Concept clarity foundation" },
+                            { title: "Arihant & Pearson CUET Guides", desc: "Exam-level practice" },
+                            { title: "Oswaal CUET Question Bank", desc: "Updated sample papers" },
+                            { title: "Kautilya In-house CUET Modules", desc: "Topic-wise short notes, formula sheets, and test papers" }
+                        ].map((book, idx) => (
+                            <Motion key={idx} type="fadeUp" delay={idx * 0.1}>
+                                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1 flex flex-col h-full">
+                                    <h3 className="text-lg sm:text-xl font-semibold text-teal-800 mb-2">{book.title}</h3>
+                                    <p className="text-sm sm:text-base text-gray-600 flex-1">{book.desc}</p>
+                                </div>
+                            </Motion>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            {/* How Kautilya Law Institute Helps You Crack CUET */}
+            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-yellow-0 to-orange-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                            {/* Left: Text */}
+                            <div>
+                                <div className="text-center lg:text-left mb-8 sm:mb-10 md:mb-12">
+                                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                        How Kautilya Law Institute Helps You Crack CUET
+                                    </h2>
+                                    <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl px-2">
+                                        Our success formula = Concepts + Consistency + Confidence
+                                    </p>
+                                </div>
+
+                                <ul className="max-w-3xl space-y-3 text-gray-800 text-base sm:text-lg md:text-xl">
+                                    <li className="flex items-center"><Check className="w-5 h-5 text-blue-500 mr-2" /> Daily Concept Classes</li>
+                                    <li className="flex items-center"><Check className="w-5 h-5 text-blue-500 mr-2" /> Section-Wise Practice Tests</li>
+                                    <li className="flex items-center"><Check className="w-5 h-5 text-blue-500 mr-2" /> Time-Bound Mock Drills</li>
+                                    <li className="flex items-center"><Check className="w-5 h-5 text-blue-500 mr-2" /> Doubt Resolution Support</li>
+                                    <li className="flex items-center"><Check className="w-5 h-5 text-blue-500 mr-2" /> Personalized Improvement Plans</li>
+                                </ul>
+
+                                <p className="text-gray-600 mt-4 max-w-2xl">
+                                    Every student receives a custom strategy to maximize their CUET score.
+                                </p>
+                            </div>
+
+                            {/* Right: Image */}
+                            <div className="flex justify-center lg:justify-end">
+                                <img
+                                    src={design10}
+                                    alt="CUET Preparation Illustration"
+                                    className="w-full max-w-md rounded-lg"
+                                />
+                            </div>
+                        </div>
+                    </Motion>
+                </div>
+            </section>
+            {/* Career Opportunities After CUET */}
+            <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                Career Opportunities After CUET
+                            </h2>
+                            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-2">
+                                Once you clear CUET, a world of opportunities opens up!
+                            </p>
+                        </div>
+                    </Motion>
+
+                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="bg-gray-50 p-6 rounded-xl shadow-md">
+                            <h3 className="text-lg font-bold text-gray-800 mb-2">🎓 Undergraduate Courses</h3>
+                            <p>BA, BCom, BBA, BSc, LLB, Journalism, Economics, Political Science & more.</p>
+                        </div>
+                        <div className="bg-gray-50 p-6 rounded-xl shadow-md">
+                            <h3 className="text-lg font-bold text-gray-800 mb-2">🏛️ Top Universities</h3>
+                            <p>Delhi University, BHU, JNU, Jamia Millia Islamia, Allahabad University, Hyderabad University.</p>
+                        </div>
+                        <div className="bg-gray-50 p-6 rounded-xl shadow-md">
+                            <h3 className="text-lg font-bold text-gray-800 mb-2">💼 Career Paths</h3>
+                            <p>Civil Services, Law, Business, Research, Media, Management, and beyond.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Our Unique Strengths (USPs) */}
+            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                Our Unique Strengths (USPs)
+                            </h2>
+                        </div>
+                    </Motion>
+
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 text-gray-800 text-lg">
+                        {[
+                            "✨ 10+ Years of Academic Excellence",
+                            "✨ 360° CUET Preparation – From Basics to Advance",
+                            "✨ Weekly Performance Reports",
+                            "✨ Personalized Mentorship",
+                            "✨ Affordable Fee Plans",
+                            "✨ 24×7 Student Support"
+                        ].map((item, idx) => (
+                            <Motion key={idx} type="fadeUp" delay={idx * 0.08}>
+                                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex flex-col justify-center h-full">
+                                    <p className="text-center">{item}</p>
+                                </div>
+                            </Motion>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CUET Online Coaching – Study Anytime, Anywhere   */}
+            <section className="py-12 sm:py-16 md:py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                            {/* Left Column - Text & List */}
+                            <div>
+                                <div className="text-center lg:text-left mb-8 sm:mb-10 md:mb-12">
+                                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                        CUET Online Coaching – Study Anytime, Anywhere
+                                    </h2>
+                                    <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl lg:max-w-none mx-auto lg:mx-0 px-2">
+                                        Join India’s most interactive CUET Online Program designed for students who prefer learning at their own pace.
+                                    </p>
+                                </div>
+
+                                <ul className="max-w-3xl mx-auto lg:mx-0 space-y-3 text-gray-800 text-base sm:text-lg md:text-xl">
+                                    <li className="flex items-center gap-2"><Monitor className="w-5 h-5 text-blue-500" /> Live + Recorded Lectures</li>
+                                    <li className="flex items-center gap-2"><BookOpen className="w-5 h-5 text-blue-500" /> Digital Study Materials (PDFs & Notes)</li>
+                                    <li className="flex items-center gap-2"><ClipboardList className="w-5 h-5 text-blue-500" /> Mock Tests & Progress Analytics</li>
+                                    <li className="flex items-center gap-2"><PhoneCall className="w-5 h-5 text-blue-500" /> Faculty Mentorship Calls</li>
+                                    <li className="flex items-center gap-2"><Clock className="w-5 h-5 text-blue-500" /> Flexible Timings for School Students</li>
+                                    <li className="flex items-center gap-2"><MessageCircle className="w-5 h-5 text-blue-500" /> Unlimited Doubt Sessions</li>
+                                </ul>
+
+                                <p className="text-gray-600 mt-4 text-center lg:text-left max-w-2xl lg:max-w-none mx-auto lg:mx-0">
+                                    Prepare effectively from the comfort of your home without compromising on quality.
+                                </p>
+                            </div>
+
+                            {/* Right Column - Image */}
+                            <div className="flex justify-center lg:justify-end">
+                                <img
+                                    src={design11}
+                                    alt="CUET Online Coaching"
+                                    className="w-full max-w-md rounded-xl"
+                                />
+                            </div>
+                        </div>
+                    </Motion>
+                </div>
+            </section>
+
+            <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-green-50 to-teal-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <Motion type="fadeUp">
+                        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                                CUET Course Features (Offline/Online)
+                            </h2>
+                        </div>
+                    </Motion>
+
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-800 text-lg">
+                        {[
+                            { icon: <UserCheck className="w-6 h-6 text-blue-500 mr-2" />, text: "Excellent Faculty: Expert educators with deep subject mastery." },
+                            { icon: <BarChart2 className="w-6 h-6 text-blue-500 mr-2" />, text: "Regular Assessment: Weekly tests and personalized feedback." },
+                            { icon: <MessageSquare className="w-6 h-6 text-blue-500 mr-2" />, text: "Unlimited Doubt Clearing: One-on-one guidance till you’re confident." },
+                            { icon: <CreditCard className="w-6 h-6 text-blue-500 mr-2" />, text: "Affordable Fees: Quality CUET coaching that fits every budget." },
+                            { icon: <Laptop className="w-6 h-6 text-blue-500 mr-2" />, text: "Online + Offline Options: Learn your way – flexible & accessible." },
+                            { icon: <Monitor className="w-6 h-6 text-blue-500 mr-2" />, text: "Smart Classrooms: Digital boards, test dashboards & real-time analysis." }
+                        ].map((item, idx) => (
+                            <Motion key={idx} type="fadeUp" delay={idx * 0.08}>
+                                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition flex items-start h-full">
+                                    {item.icon}
+                                    <p className="ml-2">{item.text}</p>
                                 </div>
                             </Motion>
                         ))}
