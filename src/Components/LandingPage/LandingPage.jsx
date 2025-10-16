@@ -693,17 +693,6 @@ export default function LandingPage() {
                             />
                         </div>
 
-                        {/* Company Name */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-600 mb-1">
-                                Company Name
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Brand Name"
-                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-400 outline-none"
-                            />
-                        </div>
 
                         {/* Message */}
                         <div className="md:col-span-2">
