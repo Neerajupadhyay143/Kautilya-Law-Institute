@@ -143,13 +143,7 @@ export default function LandingPage() {
                                 </p>
 
                                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                    <button
-                                        onClick={() => setShowForm(true)}
-                                        className="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-700 transition flex items-center justify-center text-sm sm:text-base"
-                                    >
-                                        Book Free Demo Class
-                                        <ChevronRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                                    </button>
+                                  
                                     <a href="tel:+919996732928" className="border-2 border-blue-600 text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-blue-50 transition flex items-center justify-center text-sm sm:text-base">
                                         <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                                         Call Now
